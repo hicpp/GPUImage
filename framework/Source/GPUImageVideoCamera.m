@@ -876,6 +876,13 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
     }
     else if (captureOutput == audioOutput)
     {
+        CFRetain(sampleBuffer);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(willoutputAudioSampleBuffer:)]) {
+                [self.delegate willoutputAudioSampleBuffer:sampleBuffer];
+            }
+            CFRelease(sampleBuffer);
+        });
         [self processAudioSampleBuffer:sampleBuffer];
     }
     else
