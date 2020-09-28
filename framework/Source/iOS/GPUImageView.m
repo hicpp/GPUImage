@@ -236,7 +236,6 @@
         CGFloat heightScaling, widthScaling;
         
         CGSize currentViewSize = self.bounds.size;
-        
         //    CGFloat imageAspectRatio = inputImageSize.width / inputImageSize.height;
         //    CGFloat viewAspectRatio = currentViewSize.width / currentViewSize.height;
         
