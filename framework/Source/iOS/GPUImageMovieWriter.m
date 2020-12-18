@@ -805,6 +805,10 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
             {
                 NSLog(@"Couldn't write a frame");
                 //NSLog(@"Wrote a video frame: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, frameTime)));
+                if (self.writeError) {
+                    self.writeError();
+                    self.writeError = nil;
+                }
             }
             CVPixelBufferUnlockBaseAddress(pixel_buffer, 0);
             
